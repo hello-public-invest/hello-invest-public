@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -101,5 +102,25 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom glow effects and button styles */
+@layer components {
+  .glow-button {
+    @apply border-2 border-blue-500 rounded-full transition-all duration-300;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+  }
+  
+  .glow-button:hover {
+    box-shadow: 0 0 20px rgba(59, 130, 246, 0.8);
+  }
+  
+  .pink-glow {
+    box-shadow: 0 0 20px rgba(236, 72, 153, 0.6);
+  }
+  
+  .black-pink-gradient {
+    background: linear-gradient(135deg, #000000 0%, #ec4899 50%, #000000 100%);
   }
 }

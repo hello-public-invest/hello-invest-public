@@ -18,7 +18,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
       maxAmount: 500,
       returns: 10,
       days: 10,
-      color: 'from-blue-400 to-blue-600',
+      color: 'from-pink-400 to-pink-600',
       icon: '📊'
     },
     {
@@ -112,67 +112,67 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 text-white">
-      <header className="flex items-center justify-between p-4 bg-purple-800/30">
+    <div className="min-h-screen bg-gradient-to-br from-black via-pink-900 to-black text-white">
+      <header className="flex items-center justify-between p-4 bg-black/30 border-b border-pink-500">
         <div className="flex items-center space-x-3">
-          <button onClick={onBack}>
+          <button onClick={onBack} className="glow-button p-2">
             <ArrowLeft className="w-6 h-6" />
           </button>
           <div>
             <h1 className="font-bold text-lg">Investment Plans</h1>
-            <p className="text-sm text-gray-300">Choose your investment strategy</p>
+            <p className="text-sm text-pink-300">Choose your investment strategy</p>
           </div>
         </div>
         <div className="text-right">
-          <div className="text-sm text-gray-300">Available Balance</div>
-          <div className="text-lg font-bold text-yellow-400">₹{user.wallet.toLocaleString()}</div>
+          <div className="text-sm text-pink-300">Available Balance</div>
+          <div className="text-lg font-bold text-pink-400">₹{user.wallet.toLocaleString()}</div>
         </div>
       </header>
 
       <div className="p-4 space-y-4">
         {plans.map((plan) => (
-          <div key={plan.id} className="bg-purple-800/30 rounded-lg p-4 relative">
+          <div key={plan.id} className="bg-black/50 border border-pink-500 rounded-lg p-4 relative pink-glow">
             {plan.popular && (
-              <div className="absolute -top-2 left-4 bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-3 py-1 rounded-full text-xs font-bold">
+              <div className="absolute -top-2 left-4 bg-gradient-to-r from-pink-400 to-pink-600 text-black px-3 py-1 rounded-full text-xs font-bold">
                 Most Popular
               </div>
             )}
             
             <div className="flex justify-between items-start mb-4">
               <div className="flex items-center space-x-3">
-                <div className={`w-12 h-12 bg-gradient-to-r ${plan.color} rounded-lg flex items-center justify-center text-xl`}>
+                <div className={`w-12 h-12 bg-gradient-to-r ${plan.color} rounded-lg flex items-center justify-center text-xl pink-glow`}>
                   {plan.icon}
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">{plan.name}</h3>
-                  <p className="text-sm text-gray-300">{plan.description}</p>
+                  <p className="text-sm text-pink-300">{plan.description}</p>
                 </div>
               </div>
               <div className="text-right">
                 <div className="text-2xl font-bold text-green-400">{plan.returns}%</div>
-                <div className="text-sm text-gray-300">Returns</div>
+                <div className="text-sm text-pink-300">Returns</div>
               </div>
             </div>
 
             <div className="grid grid-cols-3 gap-4 mb-4">
               <div className="text-center">
                 <div className="text-lg font-bold text-blue-400">{plan.days}</div>
-                <div className="text-xs text-gray-300">Days</div>
+                <div className="text-xs text-pink-300">Days</div>
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold">Investment Range</div>
-                <div className="text-xs text-gray-300">₹{plan.minAmount.toLocaleString()} - ₹{plan.maxAmount.toLocaleString()}</div>
+                <div className="text-xs text-pink-300">₹{plan.minAmount.toLocaleString()} - ₹{plan.maxAmount.toLocaleString()}</div>
               </div>
               <div className="text-center">
                 <div className="text-sm font-semibold">Min: ₹{plan.minAmount}</div>
-                <div className="text-xs text-gray-300">Minimum Amount</div>
+                <div className="text-xs text-pink-300">Minimum Amount</div>
               </div>
             </div>
 
             {selectedPlan === plan.id ? (
               <div className="space-y-3">
                 <div>
-                  <label className="text-sm block mb-2">Investment Amount</label>
+                  <label className="text-white text-sm block mb-2">Investment Amount</label>
                   <Input
                     type="number"
                     placeholder={`Enter amount (₹${plan.minAmount} - ₹${plan.maxAmount})`}
@@ -180,12 +180,12 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
                     onChange={(e) => setInvestAmount(e.target.value)}
                     min={plan.minAmount}
                     max={plan.maxAmount}
-                    className="bg-purple-700/50 border-purple-600 text-white"
+                    className="bg-black/50 border-pink-500 text-white glow-button"
                   />
                 </div>
 
                 {investAmount && (
-                  <div className="bg-purple-700/50 rounded-lg p-3">
+                  <div className="bg-black/50 border border-pink-500 rounded-lg p-3 pink-glow">
                     <div className="flex justify-between text-sm">
                       <span>Investment:</span>
                       <span>₹{Number(investAmount || 0).toLocaleString()}</span>
@@ -196,21 +196,21 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
                     </div>
                     <div className="flex justify-between text-sm font-bold">
                       <span>Total Return:</span>
-                      <span className="text-yellow-400">₹{Number(Number(investAmount || 0) + Number(calculateProfit(Number(investAmount || 0), plan.returns))).toLocaleString()}</span>
+                      <span className="text-pink-400">₹{Number(Number(investAmount || 0) + Number(calculateProfit(Number(investAmount || 0), plan.returns))).toLocaleString()}</span>
                     </div>
                   </div>
                 )}
 
                 <div className="flex space-x-2">
                   <Button 
-                    className="flex-1 bg-gradient-to-r from-yellow-400 to-orange-500 text-black"
+                    className="glow-button flex-1 bg-gradient-to-r from-pink-400 to-pink-600 text-black hover:from-pink-500 hover:to-pink-700"
                     onClick={() => handleInvest(plan)}
                   >
                     Invest Now
                   </Button>
                   <Button 
                     variant="outline" 
-                    className="border-gray-500 text-gray-300"
+                    className="glow-button border-pink-500 text-white bg-black hover:bg-gray-800"
                     onClick={() => setSelectedPlan(null)}
                   >
                     Cancel
@@ -220,7 +220,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
             ) : (
               <div className="flex space-x-2">
                 <Button 
-                  className={`flex-1 bg-gradient-to-r ${plan.color} hover:opacity-90`}
+                  className={`glow-button flex-1 bg-gradient-to-r ${plan.color} hover:opacity-90 text-black`}
                   onClick={() => setSelectedPlan(plan.id)}
                 >
                   Invest Now
@@ -228,7 +228,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
                 <Button 
                   variant="outline" 
                   size="sm"
-                  className="border-gray-500 text-gray-300"
+                  className="glow-button border-pink-500 text-white bg-black hover:bg-gray-800"
                   onClick={() => setShowCalculator(!showCalculator)}
                 >
                   <Calculator className="w-4 h-4" />
@@ -243,30 +243,30 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
       <div className="p-4 mt-8">
         <h2 className="text-xl font-bold mb-4 text-center">Why Choose Our Investment Plans?</h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-purple-800/30 rounded-lg p-4 text-center">
+          <div className="bg-black/50 border border-pink-500 rounded-lg p-4 text-center pink-glow">
             <div className="text-2xl mb-2">🔒</div>
             <h3 className="font-bold mb-2">100% Secure</h3>
-            <p className="text-sm text-gray-300">Your investments are protected with bank-grade security</p>
+            <p className="text-sm text-pink-300">Your investments are protected with bank-grade security</p>
           </div>
           
-          <div className="bg-purple-800/30 rounded-lg p-4 text-center">
+          <div className="bg-black/50 border border-pink-500 rounded-lg p-4 text-center pink-glow">
             <div className="text-2xl mb-2">📈</div>
             <h3 className="font-bold mb-2">Guaranteed Returns</h3>
-            <p className="text-sm text-gray-300">Fixed returns with no hidden charges or fees</p>
+            <p className="text-sm text-pink-300">Fixed returns with no hidden charges or fees</p>
           </div>
           
-          <div className="bg-purple-800/30 rounded-lg p-4 text-center">
+          <div className="bg-black/50 border border-pink-500 rounded-lg p-4 text-center pink-glow">
             <div className="text-2xl mb-2">⚡</div>
             <h3 className="font-bold mb-2">Auto Payout</h3>
-            <p className="text-sm text-gray-300">Profits automatically added to your wallet</p>
+            <p className="text-sm text-pink-300">Profits automatically added to your wallet</p>
           </div>
         </div>
 
         <div className="text-center mt-6">
-          <Button className="bg-gradient-to-r from-blue-400 to-purple-500">
+          <Button className="glow-button bg-gradient-to-r from-blue-400 to-purple-500 text-black mr-2">
             Calculate Returns
           </Button>
-          <Button className="ml-2 bg-gradient-to-r from-yellow-400 to-orange-500 text-black">
+          <Button className="glow-button bg-gradient-to-r from-pink-400 to-pink-600 text-black">
             View Dashboard
           </Button>
         </div>
