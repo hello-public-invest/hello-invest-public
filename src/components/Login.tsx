@@ -76,11 +76,11 @@ const Login = ({ onLogin, onSwitchToSignUp, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-purple-800 to-purple-900 flex items-center justify-center p-4">
-      <div className="bg-purple-800/20 backdrop-blur-lg rounded-2xl p-8 w-full max-w-md border border-purple-400/30 shadow-2xl">
-        <button onClick={onBack} className="text-white mb-4 flex items-center hover:text-gray-200 transition-colors">
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 flex items-center justify-center p-4">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 w-full max-w-md border border-white/20 shadow-2xl">
+        <button onClick={onBack} className="text-black bg-white/90 hover:bg-white rounded-lg p-2 mb-4 flex items-center transition-colors">
           <ArrowLeft className="w-5 h-5 mr-2" />
-          Back
+          <span className="font-medium">Back</span>
         </button>
         
         <div className="text-center mb-8">
@@ -100,7 +100,7 @@ const Login = ({ onLogin, onSwitchToSignUp, onBack }) => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="bg-purple-700/30 border-purple-400/50 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-purple-700/40"
+              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
               required
             />
           </div>
@@ -112,14 +112,14 @@ const Login = ({ onLogin, onSwitchToSignUp, onBack }) => {
               placeholder="Enter your password"
               value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})}
-              className="bg-purple-700/30 border-purple-400/50 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-purple-700/40"
+              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
               required
             />
           </div>
 
           <Button 
             type="submit" 
-            className="w-full bg-white text-purple-900 hover:bg-gray-100 font-semibold py-3"
+            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 shadow-lg"
           >
             Login
           </Button>

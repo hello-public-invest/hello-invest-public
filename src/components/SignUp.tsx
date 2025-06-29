@@ -23,12 +23,12 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
     
     // Calculate bonus amount
     let bonusAmount = 100; // Default signup bonus
-    let bonusMessage = '₹100 Signup Bonus';
+    let bonusMessage = 'Signup Bonus ₹100 successfully added';
     
     // Check if referral code is valid (in real app, you'd validate against database)
     if (formData.referralCode && formData.referralCode.length > 0) {
       bonusAmount = 150; // 100 signup + 50 friend gift
-      bonusMessage = '₹100 Signup Bonus + ₹50 Friend Gift = ₹150 Total';
+      bonusMessage = 'Bonus and Gift successfully added - ₹150 total (₹100 Signup + ₹50 Friend Gift)';
     }
     
     // Create completely fresh user profile
@@ -74,14 +74,14 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
     
     localStorage.setItem('hpiUser', JSON.stringify(newUser));
     
-    // Show success toast instead of alert popup
+    // Show simple toast message instead of popup
     toast({
       title: "Account Created Successfully!",
-      description: `Welcome to Hello Public Invest! ${bonusMessage} has been added to your wallet.`,
+      description: bonusMessage,
       duration: 3000,
     });
     
-    // Redirect to login page instead of directly logging in
+    // Redirect to login page
     setTimeout(() => {
       onSwitchToLogin();
     }, 1000);
@@ -90,9 +90,9 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 flex items-center justify-center p-4">
       <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 w-full max-w-md border border-white/20 shadow-2xl">
-        <button onClick={onBack} className="text-white mb-4 flex items-center hover:text-gray-200 transition-colors">
+        <button onClick={onBack} className="text-black bg-white/90 hover:bg-white rounded-lg p-2 mb-4 flex items-center transition-colors">
           <ArrowLeft className="w-5 h-5 mr-2" />
-          Back
+          <span className="font-medium">Back</span>
         </button>
         
         <div className="text-center mb-8">
@@ -118,7 +118,7 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
               placeholder="Enter your full name"
               value={formData.fullName}
               onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
+              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
               required
             />
           </div>
@@ -130,7 +130,7 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
+              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
               required
             />
           </div>
@@ -142,7 +142,7 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
               placeholder="Enter your phone number"
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
+              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
               required
             />
           </div>
@@ -154,7 +154,7 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
               placeholder="Create a strong password"
               value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
+              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
               required
             />
           </div>
@@ -166,7 +166,7 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
               placeholder="Enter referral code for ₹50 bonus"
               value={formData.referralCode}
               onChange={(e) => setFormData({...formData, referralCode: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
+              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
             />
             {formData.referralCode && (
               <div className="text-green-300 text-sm font-medium mt-2">
@@ -177,7 +177,7 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
 
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold hover:from-yellow-500 hover:to-orange-600 py-3"
+            className="w-full bg-gradient-to-r from-green-500 to-blue-600 hover:from-green-600 hover:to-blue-700 text-white font-semibold py-3 shadow-lg"
           >
             Create Account
           </Button>
