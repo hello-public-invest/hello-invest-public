@@ -76,67 +76,70 @@ const Login = ({ onLogin, onSwitchToSignUp, onBack }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 flex items-center justify-center p-4">
-      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 w-full max-w-md border border-white/20 shadow-2xl">
-        <button onClick={onBack} className="text-black bg-white/90 hover:bg-white rounded-lg p-2 mb-4 flex items-center transition-colors">
-          <ArrowLeft className="w-5 h-5 mr-2" />
-          <span className="font-medium">Back</span>
+    <div className="min-h-screen bg-[#0D0D0D] flex items-center justify-center p-6 relative overflow-hidden">
+      {/* Background Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20"></div>
+      
+      <div className="glass-card p-10 w-full max-w-md relative z-10">
+        <button onClick={onBack} className="back-button p-3 mb-6 flex items-center transition-all duration-300">
+          <ArrowLeft className="w-5 h-5 mr-2 text-white" />
+          <span className="font-medium text-white">Back</span>
         </button>
         
-        <div className="text-center mb-8">
-          <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-            <span className="text-xl font-bold text-black">₹</span>
+        <div className="text-center mb-10">
+          <div className="w-20 h-20 neon-gradient rounded-full flex items-center justify-center mx-auto mb-6">
+            <span className="text-2xl font-bold text-white">₹</span>
           </div>
-          <h1 className="text-white text-2xl font-bold">Hello Public</h1>
-          <p className="text-yellow-400 font-semibold">Invest</p>
-          <h2 className="text-white text-xl mt-4 font-semibold">Welcome Back!</h2>
+          <h1 className="text-white text-3xl font-bold mb-2">Hello Public</h1>
+          <p className="text-[#FF4E6A] font-semibold text-lg">Invest</p>
+          <h2 className="text-white text-2xl mt-6 font-semibold">Welcome Back!</h2>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
+        <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label className="text-white text-sm font-medium block mb-2">Email</label>
+            <label className="text-white text-sm font-medium block mb-3">Email</label>
             <Input
               type="email"
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
+              className="glass-input py-4 text-white font-medium"
               required
             />
           </div>
 
           <div>
-            <label className="text-white text-sm font-medium block mb-2">Password</label>
+            <label className="text-white text-sm font-medium block mb-3">Password</label>
             <Input
               type="password"
               placeholder="Enter your password"
               value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})}
-              className="bg-white/20 border-white/30 text-black placeholder-gray-600 focus:border-yellow-400 focus:bg-white/30 font-medium"
+              className="glass-input py-4 text-white font-medium"
               required
             />
           </div>
 
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 text-white font-semibold py-3 shadow-lg"
+            className="neon-button neon-blue text-white font-semibold py-4 w-full text-lg"
           >
             Login
           </Button>
         </form>
 
-        <div className="text-center mt-6">
-          <span className="text-gray-200">Don't have an account? </span>
+        <div className="text-center mt-8">
+          <span className="text-white/70">Don't have an account? </span>
           <button 
             onClick={onSwitchToSignUp}
-            className="text-yellow-400 hover:underline font-medium"
+            className="text-[#FF4E6A] hover:underline font-medium"
           >
             Sign up here
           </button>
         </div>
 
-        <div className="text-center mt-4">
-          <button onClick={onBack} className="text-yellow-400 hover:underline text-sm">
+        <div className="text-center mt-6">
+          <button onClick={onBack} className="text-[#4EB8FF] hover:underline text-sm">
             ← Back to Home
           </button>
         </div>

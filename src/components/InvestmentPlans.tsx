@@ -7,7 +7,6 @@ import { ArrowLeft, Calculator } from 'lucide-react';
 const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [investAmount, setInvestAmount] = useState('');
-  const [showCalculator, setShowCalculator] = useState(false);
 
   const plans = [
     {
@@ -18,7 +17,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
       maxAmount: 500,
       returns: 10,
       days: 10,
-      color: 'from-pink-400 to-pink-600',
+      color: 'neon-red',
       icon: '📊'
     },
     {
@@ -29,7 +28,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
       maxAmount: 1000,
       returns: 18,
       days: 25,
-      color: 'from-green-400 to-green-600',
+      color: 'neon-blue',
       icon: '📈',
       popular: true
     },
@@ -41,7 +40,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
       maxAmount: 3000,
       returns: 27,
       days: 14,
-      color: 'from-purple-400 to-purple-600',
+      color: 'neon-purple',
       icon: '📊'
     },
     {
@@ -52,7 +51,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
       maxAmount: 5000,
       returns: 35,
       days: 60,
-      color: 'from-orange-400 to-orange-600',
+      color: 'neon-gradient',
       icon: '📊'
     },
     {
@@ -63,7 +62,7 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
       maxAmount: 999999,
       returns: 45,
       days: 30,
-      color: 'from-red-400 to-red-600',
+      color: 'neon-red',
       icon: '📊'
     }
   ];
@@ -112,67 +111,70 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-black via-pink-900 to-black text-white">
-      <header className="flex items-center justify-between p-4 bg-black/30 border-b border-pink-500">
-        <div className="flex items-center space-x-3">
-          <button onClick={onBack} className="glow-button p-2">
-            <ArrowLeft className="w-6 h-6" />
+    <div className="min-h-screen bg-[#0D0D0D] text-white relative overflow-hidden">
+      {/* Background Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20"></div>
+      
+      <header className="relative flex items-center justify-between p-6 glass-card-dark mx-4 mt-4 rounded-2xl border border-white/10">
+        <div className="flex items-center space-x-4">
+          <button onClick={onBack} className="back-button p-3">
+            <ArrowLeft className="w-6 h-6 text-white" />
           </button>
           <div>
-            <h1 className="font-bold text-lg">Investment Plans</h1>
-            <p className="text-sm text-pink-300">Choose your investment strategy</p>
+            <h1 className="font-bold text-xl text-white">Investment Plans</h1>
+            <p className="text-white/70">Choose your investment strategy</p>
           </div>
         </div>
         <div className="text-right">
-          <div className="text-sm text-pink-300">Available Balance</div>
-          <div className="text-lg font-bold text-pink-400">₹{user.wallet.toLocaleString()}</div>
+          <div className="text-sm text-white/70">Available Balance</div>
+          <div className="text-xl font-bold text-[#FF4E6A]">₹{user.wallet.toLocaleString()}</div>
         </div>
       </header>
 
-      <div className="p-4 space-y-4">
+      <div className="p-4 space-y-6 mt-4">
         {plans.map((plan) => (
-          <div key={plan.id} className="bg-black/50 border border-pink-500 rounded-lg p-4 relative pink-glow">
+          <div key={plan.id} className="glass-card-dark p-6 rounded-2xl relative border border-white/10">
             {plan.popular && (
-              <div className="absolute -top-2 left-4 bg-gradient-to-r from-pink-400 to-pink-600 text-black px-3 py-1 rounded-full text-xs font-bold">
+              <div className="absolute -top-3 left-6 neon-gradient px-4 py-2 rounded-full text-white font-bold text-sm">
                 Most Popular
               </div>
             )}
             
-            <div className="flex justify-between items-start mb-4">
-              <div className="flex items-center space-x-3">
-                <div className={`w-12 h-12 bg-gradient-to-r ${plan.color} rounded-lg flex items-center justify-center text-xl pink-glow`}>
+            <div className="flex justify-between items-start mb-6">
+              <div className="flex items-center space-x-4">
+                <div className={`w-16 h-16 ${plan.color} rounded-2xl flex items-center justify-center text-2xl`}>
                   {plan.icon}
                 </div>
                 <div>
-                  <h3 className="font-bold text-lg">{plan.name}</h3>
-                  <p className="text-sm text-pink-300">{plan.description}</p>
+                  <h3 className="font-bold text-xl text-white">{plan.name}</h3>
+                  <p className="text-white/70">{plan.description}</p>
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-2xl font-bold text-green-400">{plan.returns}%</div>
-                <div className="text-sm text-pink-300">Returns</div>
+                <div className="text-3xl font-bold text-[#4EB8FF]">{plan.returns}%</div>
+                <div className="text-white/70">Returns</div>
               </div>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mb-4">
+            <div className="grid grid-cols-3 gap-6 mb-6">
               <div className="text-center">
-                <div className="text-lg font-bold text-blue-400">{plan.days}</div>
-                <div className="text-xs text-pink-300">Days</div>
+                <div className="text-xl font-bold text-[#A94EFF]">{plan.days}</div>
+                <div className="text-sm text-white/70">Days</div>
               </div>
               <div className="text-center">
-                <div className="text-sm font-semibold">Investment Range</div>
-                <div className="text-xs text-pink-300">₹{plan.minAmount.toLocaleString()} - ₹{plan.maxAmount.toLocaleString()}</div>
+                <div className="text-sm font-semibold text-white">Investment Range</div>
+                <div className="text-xs text-white/70">₹{plan.minAmount.toLocaleString()} - ₹{plan.maxAmount.toLocaleString()}</div>
               </div>
               <div className="text-center">
-                <div className="text-sm font-semibold">Min: ₹{plan.minAmount}</div>
-                <div className="text-xs text-pink-300">Minimum Amount</div>
+                <div className="text-sm font-semibold text-white">Min: ₹{plan.minAmount}</div>
+                <div className="text-xs text-white/70">Minimum Amount</div>
               </div>
             </div>
 
             {selectedPlan === plan.id ? (
-              <div className="space-y-3">
+              <div className="space-y-4">
                 <div>
-                  <label className="text-white text-sm block mb-2">Investment Amount</label>
+                  <label className="text-white text-sm block mb-3">Investment Amount</label>
                   <Input
                     type="number"
                     placeholder={`Enter amount (₹${plan.minAmount} - ₹${plan.maxAmount})`}
@@ -180,37 +182,36 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
                     onChange={(e) => setInvestAmount(e.target.value)}
                     min={plan.minAmount}
                     max={plan.maxAmount}
-                    className="bg-black/50 border-pink-500 text-white glow-button"
+                    className="glass-input py-4 text-white"
                   />
                 </div>
 
                 {investAmount && (
-                  <div className="bg-black/50 border border-pink-500 rounded-lg p-3 pink-glow">
-                    <div className="flex justify-between text-sm">
-                      <span>Investment:</span>
-                      <span>₹{Number(investAmount || 0).toLocaleString()}</span>
+                  <div className="glass-card p-4 rounded-xl border border-white/20">
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-white/70">Investment:</span>
+                      <span className="text-white">₹{Number(investAmount || 0).toLocaleString()}</span>
                     </div>
-                    <div className="flex justify-between text-sm">
-                      <span>Expected Profit:</span>
-                      <span className="text-green-400">₹{Number(calculateProfit(Number(investAmount || 0), plan.returns)).toLocaleString()}</span>
+                    <div className="flex justify-between text-sm mb-2">
+                      <span className="text-white/70">Expected Profit:</span>
+                      <span className="text-[#4EB8FF]">₹{Number(calculateProfit(Number(investAmount || 0), plan.returns)).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between text-sm font-bold">
-                      <span>Total Return:</span>
-                      <span className="text-pink-400">₹{Number(Number(investAmount || 0) + Number(calculateProfit(Number(investAmount || 0), plan.returns))).toLocaleString()}</span>
+                      <span className="text-white">Total Return:</span>
+                      <span className="text-[#FF4E6A]">₹{Number(Number(investAmount || 0) + Number(calculateProfit(Number(investAmount || 0), plan.returns))).toLocaleString()}</span>
                     </div>
                   </div>
                 )}
 
-                <div className="flex space-x-2">
+                <div className="flex space-x-3">
                   <Button 
-                    className="glow-button flex-1 bg-gradient-to-r from-pink-400 to-pink-600 text-black hover:from-pink-500 hover:to-pink-700"
+                    className={`neon-button ${plan.color} text-white flex-1 py-3`}
                     onClick={() => handleInvest(plan)}
                   >
                     Invest Now
                   </Button>
                   <Button 
-                    variant="outline" 
-                    className="glow-button border-pink-500 text-white bg-black hover:bg-gray-800"
+                    className="back-button px-6 py-3 text-white"
                     onClick={() => setSelectedPlan(null)}
                   >
                     Cancel
@@ -218,18 +219,15 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
                 </div>
               </div>
             ) : (
-              <div className="flex space-x-2">
+              <div className="flex space-x-3">
                 <Button 
-                  className={`glow-button flex-1 bg-gradient-to-r ${plan.color} hover:opacity-90 text-black`}
+                  className={`neon-button ${plan.color} text-white flex-1 py-3`}
                   onClick={() => setSelectedPlan(plan.id)}
                 >
                   Invest Now
                 </Button>
                 <Button 
-                  variant="outline" 
-                  size="sm"
-                  className="glow-button border-pink-500 text-white bg-black hover:bg-gray-800"
-                  onClick={() => setShowCalculator(!showCalculator)}
+                  className="back-button px-6 py-3 text-white"
                 >
                   <Calculator className="w-4 h-4" />
                 </Button>
@@ -241,34 +239,25 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
 
       {/* Why Choose Our Investment Plans */}
       <div className="p-4 mt-8">
-        <h2 className="text-xl font-bold mb-4 text-center">Why Choose Our Investment Plans?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="bg-black/50 border border-pink-500 rounded-lg p-4 text-center pink-glow">
-            <div className="text-2xl mb-2">🔒</div>
-            <h3 className="font-bold mb-2">100% Secure</h3>
-            <p className="text-sm text-pink-300">Your investments are protected with bank-grade security</p>
+        <h2 className="text-2xl font-bold mb-6 text-center text-white">Why Choose Our Investment Plans?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="glass-card-dark p-6 rounded-2xl text-center">
+            <div className="text-3xl mb-4">🔒</div>
+            <h3 className="font-bold mb-3 text-white text-lg">100% Secure</h3>
+            <p className="text-white/70">Your investments are protected with bank-grade security</p>
           </div>
           
-          <div className="bg-black/50 border border-pink-500 rounded-lg p-4 text-center pink-glow">
-            <div className="text-2xl mb-2">📈</div>
-            <h3 className="font-bold mb-2">Guaranteed Returns</h3>
-            <p className="text-sm text-pink-300">Fixed returns with no hidden charges or fees</p>
+          <div className="glass-card-dark p-6 rounded-2xl text-center">
+            <div className="text-3xl mb-4">📈</div>
+            <h3 className="font-bold mb-3 text-white text-lg">Guaranteed Returns</h3>
+            <p className="text-white/70">Fixed returns with no hidden charges or fees</p>
           </div>
           
-          <div className="bg-black/50 border border-pink-500 rounded-lg p-4 text-center pink-glow">
-            <div className="text-2xl mb-2">⚡</div>
-            <h3 className="font-bold mb-2">Auto Payout</h3>
-            <p className="text-sm text-pink-300">Profits automatically added to your wallet</p>
+          <div className="glass-card-dark p-6 rounded-2xl text-center">
+            <div className="text-3xl mb-4">⚡</div>
+            <h3 className="font-bold mb-3 text-white text-lg">Auto Payout</h3>
+            <p className="text-white/70">Profits automatically added to your wallet</p>
           </div>
-        </div>
-
-        <div className="text-center mt-6">
-          <Button className="glow-button bg-gradient-to-r from-blue-400 to-purple-500 text-black mr-2">
-            Calculate Returns
-          </Button>
-          <Button className="glow-button bg-gradient-to-r from-pink-400 to-pink-600 text-black">
-            View Dashboard
-          </Button>
         </div>
       </div>
     </div>

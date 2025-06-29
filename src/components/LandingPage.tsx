@@ -1,22 +1,25 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
 const LandingPage = ({ onLogin, onSignUp, onNavigate }) => {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 text-white">
+    <div className="min-h-screen bg-[#0D0D0D] text-white relative overflow-hidden">
+      {/* Background Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20"></div>
+      
       {/* Header */}
-      <header className="flex items-center justify-between p-4">
-        <div className="flex items-center space-x-2">
-          <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-            <span className="text-sm font-bold text-black">₹</span>
+      <header className="relative flex items-center justify-between p-6">
+        <div className="flex items-center space-x-3">
+          <div className="w-10 h-10 neon-gradient rounded-full flex items-center justify-center">
+            <span className="text-lg font-bold text-white">₹</span>
           </div>
-          <span className="font-bold text-lg">Hello Public</span>
-          <span className="text-yellow-400 text-sm">Invest</span>
+          <div>
+            <span className="font-bold text-xl text-white">Hello Public</span>
+            <span className="text-[#FF4E6A] text-sm ml-2 font-semibold">Invest</span>
+          </div>
         </div>
         <Button 
-          variant="outline" 
-          className="border-white text-black bg-white hover:bg-gray-100 font-semibold"
+          className="neon-button neon-blue text-white border-0 px-6 py-3"
           onClick={onSignUp}
         >
           Get Started
@@ -24,28 +27,27 @@ const LandingPage = ({ onLogin, onSignUp, onNavigate }) => {
       </header>
 
       {/* Welcome Banner */}
-      <div className="text-center px-4 py-8">
-        <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-1 rounded-full inline-block text-sm mb-6">
-          💰 Welcome Bonus ₹100 for New Users!
+      <div className="relative text-center px-6 py-12">
+        <div className="glass-card inline-block px-6 py-3 mb-8 neon-gradient">
+          <span className="text-white font-bold">💰 Welcome Bonus ₹100 for New Users!</span>
         </div>
         
-        <h1 className="text-4xl font-bold mb-4">
-          Invest Smart, <span className="text-yellow-400">Earn More</span>
+        <h1 className="text-5xl font-bold mb-6 text-white">
+          Invest Smart, <span className="text-[#FF4E6A]">Earn More</span>
         </h1>
-        <p className="text-lg mb-8 px-4">
+        <p className="text-xl mb-10 px-4 text-white/80 max-w-2xl mx-auto">
           Join thousands of smart investors earning guaranteed returns with our AI-powered investment platform
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-4 justify-center px-4 mb-8">
+        <div className="flex flex-col sm:flex-row gap-6 justify-center px-4 mb-12">
           <Button 
-            className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold hover:from-yellow-500 hover:to-orange-600"
+            className="neon-button neon-gradient text-white px-8 py-4 text-lg"
             onClick={onSignUp}
           >
             Start Investing Now
           </Button>
           <Button 
-            variant="outline" 
-            className="border-white text-white bg-transparent hover:bg-white hover:text-black font-semibold"
+            className="neon-button back-button px-8 py-4 text-lg text-white"
             onClick={onLogin}
           >
             Login
@@ -53,101 +55,101 @@ const LandingPage = ({ onLogin, onSignUp, onNavigate }) => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-4 mb-8">
-          <div className="text-center">
-            <div className="text-2xl font-bold text-yellow-400">50,000+</div>
-            <div className="text-sm">Active Investors</div>
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-4 mb-12 max-w-4xl mx-auto">
+          <div className="glass-card p-6 text-center">
+            <div className="text-3xl font-bold text-[#FF4E6A] mb-2">50,000+</div>
+            <div className="text-sm text-white/80">Active Investors</div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-green-400">₹2.5 Cr+</div>
-            <div className="text-sm">Total Payouts</div>
+          <div className="glass-card p-6 text-center">
+            <div className="text-3xl font-bold text-[#4EB8FF] mb-2">₹2.5 Cr+</div>
+            <div className="text-sm text-white/80">Total Payouts</div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-blue-400">99.8%</div>
-            <div className="text-sm">Success Rate</div>
+          <div className="glass-card p-6 text-center">
+            <div className="text-3xl font-bold text-[#A94EFF] mb-2">99.8%</div>
+            <div className="text-sm text-white/80">Success Rate</div>
           </div>
-          <div className="text-center">
-            <div className="text-2xl font-bold text-purple-400">18%</div>
-            <div className="text-sm">Avg. Returns</div>
+          <div className="glass-card p-6 text-center">
+            <div className="text-3xl font-bold text-white mb-2">18%</div>
+            <div className="text-sm text-white/80">Avg. Returns</div>
           </div>
         </div>
       </div>
 
       {/* Why Choose Section */}
-      <div className="px-4 py-8">
-        <h2 className="text-2xl font-bold text-center mb-8">Why Choose Hello Public Invest?</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-xl">💡</span>
+      <div className="relative px-6 py-12">
+        <h2 className="text-3xl font-bold text-center mb-12 text-white">Why Choose Hello Public Invest?</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          <div className="glass-card p-8 text-center">
+            <div className="w-16 h-16 neon-gradient rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span className="text-2xl">💡</span>
             </div>
-            <h3 className="font-bold mb-2">Smart Investment Plans</h3>
-            <p className="text-sm text-gray-300">5 curated plans with guaranteed returns up to 45%</p>
+            <h3 className="font-bold text-xl mb-4 text-white">Smart Investment Plans</h3>
+            <p className="text-white/70">5 curated plans with guaranteed returns up to 45%</p>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-green-400 to-blue-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-xl">📈</span>
+          <div className="glass-card p-8 text-center">
+            <div className="w-16 h-16 neon-blue rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span className="text-2xl">📈</span>
             </div>
-            <h3 className="font-bold mb-2">Auto Profit System</h3>
-            <p className="text-sm text-gray-300">Earnings automatically added to your wallet</p>
+            <h3 className="font-bold text-xl mb-4 text-white">Auto Profit System</h3>
+            <p className="text-white/70">Earnings automatically added to your wallet</p>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-400 to-pink-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-xl">🔒</span>
+          <div className="glass-card p-8 text-center">
+            <div className="w-16 h-16 neon-purple rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span className="text-2xl">🔒</span>
             </div>
-            <h3 className="font-bold mb-2">Secure Platform</h3>
-            <p className="text-sm text-gray-300">Bank-grade security for all transactions</p>
+            <h3 className="font-bold text-xl mb-4 text-white">Secure Platform</h3>
+            <p className="text-white/70">Bank-grade security for all transactions</p>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-            <div className="w-12 h-12 bg-gradient-to-r from-red-400 to-yellow-500 rounded-full flex items-center justify-center mx-auto mb-4">
-              <span className="text-xl">👥</span>
+          <div className="glass-card p-8 text-center">
+            <div className="w-16 h-16 neon-red rounded-2xl flex items-center justify-center mx-auto mb-6">
+              <span className="text-2xl">👥</span>
             </div>
-            <h3 className="font-bold mb-2">Referral Rewards</h3>
-            <p className="text-sm text-gray-300">Earn ₹150 for every successful referral</p>
+            <h3 className="font-bold text-xl mb-4 text-white">Referral Rewards</h3>
+            <p className="text-white/70">Earn ₹150 for every successful referral</p>
           </div>
         </div>
       </div>
 
       {/* Investment Plans Preview */}
-      <div className="px-4 py-8">
-        <h2 className="text-2xl font-bold text-center mb-8">Investment Plans</h2>
-        <p className="text-center text-gray-300 mb-8">Choose from our carefully curated investment options</p>
+      <div className="relative px-6 py-12">
+        <h2 className="text-3xl font-bold text-center mb-6 text-white">Investment Plans</h2>
+        <p className="text-center text-white/70 mb-12 text-lg">Choose from our carefully curated investment options</p>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-6xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-            <div className="text-2xl font-bold text-green-400">₹1,000</div>
-            <div className="text-green-400 font-semibold">12% Returns</div>
-            <div className="text-gray-300">15 Days</div>
-            <Button className="w-full mt-4 bg-blue-600 hover:bg-blue-700 text-white">Invest Now</Button>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="glass-card p-8 text-center">
+            <div className="text-3xl font-bold text-[#4EB8FF] mb-2">₹1,000</div>
+            <div className="text-[#4EB8FF] font-semibold text-lg mb-2">12% Returns</div>
+            <div className="text-white/70 mb-6">15 Days</div>
+            <Button className="neon-button neon-blue text-white w-full py-3">Invest Now</Button>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-            <div className="text-2xl font-bold text-green-400">₹5,000</div>
-            <div className="text-green-400 font-semibold">18% Returns</div>
-            <div className="text-gray-300">25 Days</div>
-            <Button className="w-full mt-4 bg-green-600 hover:bg-green-700 text-white">Invest Now</Button>
+          <div className="glass-card p-8 text-center border-2 border-[#FF4E6A]/30">
+            <div className="text-3xl font-bold text-[#FF4E6A] mb-2">₹5,000</div>
+            <div className="text-[#FF4E6A] font-semibold text-lg mb-2">18% Returns</div>
+            <div className="text-white/70 mb-6">25 Days</div>
+            <Button className="neon-button neon-red text-white w-full py-3">Invest Now</Button>
           </div>
           
-          <div className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg p-6 text-center">
-            <div className="text-2xl font-bold text-green-400">₹10,000</div>
-            <div className="text-green-400 font-semibold">25% Returns</div>
-            <div className="text-gray-300">45 Days</div>
-            <Button className="w-full mt-4 bg-orange-600 hover:bg-orange-700 text-white">Invest Now</Button>
+          <div className="glass-card p-8 text-center">
+            <div className="text-3xl font-bold text-[#A94EFF] mb-2">₹10,000</div>
+            <div className="text-[#A94EFF] font-semibold text-lg mb-2">25% Returns</div>
+            <div className="text-white/70 mb-6">45 Days</div>
+            <Button className="neon-button neon-purple text-white w-full py-3">Invest Now</Button>
           </div>
         </div>
       </div>
 
       {/* CTA Section */}
-      <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black py-12 px-4 text-center">
+      <div className="relative neon-gradient py-16 px-6 text-center">
         <div className="max-w-2xl mx-auto">
-          <div className="text-4xl mb-4">🎁</div>
-          <h2 className="text-2xl font-bold mb-4">Ready to Start Your Investment Journey?</h2>
-          <p className="mb-6">Join now and get ₹100 welcome bonus + daily rewards!</p>
+          <div className="text-5xl mb-6">🎁</div>
+          <h2 className="text-3xl font-bold mb-6 text-white">Ready to Start Your Investment Journey?</h2>
+          <p className="mb-8 text-lg text-white/90">Join now and get ₹100 welcome bonus + daily rewards!</p>
           <Button 
-            className="bg-black text-white hover:bg-gray-800 px-8 py-3"
+            className="neon-button bg-black/20 backdrop-blur-lg text-white hover:bg-black/30 px-10 py-4 text-lg"
             onClick={onSignUp}
           >
             Create Account - It's Free!
@@ -156,54 +158,80 @@ const LandingPage = ({ onLogin, onSignUp, onNavigate }) => {
       </div>
 
       {/* Footer */}
-      <footer className="bg-black text-white py-8 px-4 border-t border-gray-700">
+      <footer className="relative bg-black/40 backdrop-blur-lg text-white py-12 px-6 border-t border-white/10">
         <div className="max-w-6xl mx-auto">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-6 h-6 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                  <span className="text-xs font-bold text-black">₹</span>
+              <div className="flex items-center space-x-3 mb-6">
+                <div className="w-8 h-8 neon-gradient rounded-full flex items-center justify-center">
+                  <span className="text-sm font-bold text-white">₹</span>
                 </div>
-                <span className="font-bold">Hello Public</span>
+                <span className="font-bold text-lg text-white">Hello Public</span>
               </div>
-              <p className="text-sm text-gray-400">India's most trusted investment platform. Start your investment journey with guaranteed returns.</p>
+              <p className="text-white/70">India's most trusted investment platform. Start your investment journey with guaranteed returns.</p>
             </div>
             
             <div>
-              <h3 className="font-bold mb-4">Quick Links</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><button onClick={() => onNavigate('dashboard')} className="hover:text-white">Dashboard</button></li>
-                <li><button onClick={() => onNavigate('investment')} className="hover:text-white">Investment Plans</button></li>
-                <li><button onClick={() => onNavigate('wallet')} className="hover:text-white">Wallet</button></li>
-                <li><button onClick={() => onNavigate('calculator')} className="hover:text-white">Calculator</button></li>
-                <li><button onClick={() => onNavigate('referral')} className="hover:text-white">Referral</button></li>
-                <li><button onClick={() => onNavigate('history')} className="hover:text-white">History</button></li>
+              <h3 className="font-bold mb-4 text-white">Quick Links</h3>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <button onClick={() => onNavigate('dashboard')} className="hover:text-[#4EB8FF] transition-colors duration-200">Dashboard</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('investment')} className="hover:text-[#4EB8FF] transition-colors duration-200">Investment Plans</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('wallet')} className="hover:text-[#4EB8FF] transition-colors duration-200">Wallet</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('calculator')} className="hover:text-[#4EB8FF] transition-colors duration-200">Calculator</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('referral')} className="hover:text-[#4EB8FF] transition-colors duration-200">Referral</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('history')} className="hover:text-[#4EB8FF] transition-colors duration-200">History</button>
+                </li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-bold mb-4">Legal</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><button onClick={() => onNavigate('privacy')} className="hover:text-white">Privacy Policy</button></li>
-                <li><button onClick={() => onNavigate('terms')} className="hover:text-white">Terms & Conditions</button></li>
-                <li><button onClick={() => onNavigate('refund')} className="hover:text-white">Refund Policy</button></li>
-                <li><button onClick={() => onNavigate('recruitment')} className="hover:text-white">Recruitment</button></li>
+              <h3 className="font-bold mb-4 text-white">Legal</h3>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <button onClick={() => onNavigate('privacy')} className="hover:text-[#4EB8FF] transition-colors duration-200">Privacy Policy</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('terms')} className="hover:text-[#4EB8FF] transition-colors duration-200">Terms & Conditions</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('refund')} className="hover:text-[#4EB8FF] transition-colors duration-200">Refund Policy</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('recruitment')} className="hover:text-[#4EB8FF] transition-colors duration-200">Recruitment</button>
+                </li>
               </ul>
             </div>
             
             <div>
-              <h3 className="font-bold mb-4">Support</h3>
-              <ul className="space-y-2 text-sm text-gray-400">
-                <li><button onClick={() => onNavigate('contact')} className="hover:text-white">Contact Us</button></li>
-                <li><button onClick={() => onNavigate('help')} className="hover:text-white">Help Center</button></li>
-                <li><button onClick={() => onNavigate('faq')} className="hover:text-white">FAQ</button></li>
-                <li className="text-xs">support@hellopublicinvest.com</li>
-                <li className="text-xs">📞 +91 9876543210</li>
+              <h3 className="font-bold mb-4 text-white">Support</h3>
+              <ul className="space-y-3 text-sm">
+                <li>
+                  <button onClick={() => onNavigate('contact')} className="hover:text-[#4EB8FF] transition-colors duration-200">Contact Us</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('help')} className="hover:text-[#4EB8FF] transition-colors duration-200">Help Center</button>
+                </li>
+                <li>
+                  <button onClick={() => onNavigate('faq')} className="hover:text-[#4EB8FF] transition-colors duration-200">FAQ</button>
+                </li>
+                <li className="text-white/60">support@hellopublicinvest.com</li>
+                <li className="text-white/60">📞 +91 9876543210</li>
               </ul>
             </div>
           </div>
           
-          <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-400">
+          <div className="border-t border-white/10 mt-12 pt-8 text-center text-white/70">
             © 2024 Hello Public Invest. All rights reserved. | Made in India 🇮🇳
           </div>
         </div>
