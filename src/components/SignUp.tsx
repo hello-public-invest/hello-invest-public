@@ -3,8 +3,10 @@ import React, { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ArrowLeft } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
+  const { toast } = useToast();
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -72,16 +74,23 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
     
     localStorage.setItem('hpiUser', JSON.stringify(newUser));
     
-    // Show bonus message
-    alert(`Welcome to Hello Public Invest! ${bonusMessage} has been added to your wallet.`);
+    // Show success toast instead of alert popup
+    toast({
+      title: "Account Created Successfully!",
+      description: `Welcome to Hello Public Invest! ${bonusMessage} has been added to your wallet.`,
+      duration: 3000,
+    });
     
-    onSignUp(newUser);
+    // Redirect to login page instead of directly logging in
+    setTimeout(() => {
+      onSwitchToLogin();
+    }, 1000);
   };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-900 via-blue-800 to-purple-900 flex items-center justify-center p-4">
-      <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 w-full max-w-md border border-white/20">
-        <button onClick={onBack} className="text-white mb-4 flex items-center hover:text-gray-300">
+      <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 w-full max-w-md border border-white/20 shadow-2xl">
+        <button onClick={onBack} className="text-white mb-4 flex items-center hover:text-gray-200 transition-colors">
           <ArrowLeft className="w-5 h-5 mr-2" />
           Back
         </button>
@@ -91,76 +100,76 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
             <span className="text-xl font-bold text-black">₹</span>
           </div>
           <h1 className="text-white text-2xl font-bold">Hello Public</h1>
-          <p className="text-yellow-400">Invest</p>
-          <h2 className="text-white text-xl mt-4">Join Us Today!</h2>
-          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-1 rounded-full text-sm mt-2">
+          <p className="text-yellow-400 font-semibold">Invest</p>
+          <h2 className="text-white text-xl mt-4 font-semibold">Join Us Today!</h2>
+          <div className="bg-gradient-to-r from-yellow-400 to-orange-500 text-black px-4 py-2 rounded-full text-sm font-semibold mt-3">
             💰 ₹100 Welcome Bonus + ₹50 Friend Gift*
           </div>
-          <div className="text-xs text-gray-300 mt-1">
+          <div className="text-xs text-gray-200 mt-2">
             *₹50 Friend Gift when you use a referral code
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="text-white text-sm block mb-2">Full Name</label>
+            <label className="text-white text-sm font-medium block mb-2">Full Name</label>
             <Input
               type="text"
               placeholder="Enter your full name"
               value={formData.fullName}
               onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400"
+              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
               required
             />
           </div>
 
           <div>
-            <label className="text-white text-sm block mb-2">Email</label>
+            <label className="text-white text-sm font-medium block mb-2">Email</label>
             <Input
               type="email"
               placeholder="Enter your email"
               value={formData.email}
               onChange={(e) => setFormData({...formData, email: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400"
+              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
               required
             />
           </div>
 
           <div>
-            <label className="text-white text-sm block mb-2">Phone Number</label>
+            <label className="text-white text-sm font-medium block mb-2">Phone Number</label>
             <Input
               type="tel"
               placeholder="Enter your phone number"
               value={formData.phone}
               onChange={(e) => setFormData({...formData, phone: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400"
+              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
               required
             />
           </div>
 
           <div>
-            <label className="text-white text-sm block mb-2">Password</label>
+            <label className="text-white text-sm font-medium block mb-2">Password</label>
             <Input
               type="password"
               placeholder="Create a strong password"
               value={formData.password}
               onChange={(e) => setFormData({...formData, password: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400"
+              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
               required
             />
           </div>
 
           <div>
-            <label className="text-white text-sm block mb-2">Referral Code (Optional)</label>
+            <label className="text-white text-sm font-medium block mb-2">Referral Code (Optional)</label>
             <Input
               type="text"
               placeholder="Enter referral code for ₹50 bonus"
               value={formData.referralCode}
               onChange={(e) => setFormData({...formData, referralCode: e.target.value})}
-              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400"
+              className="bg-white/20 border-white/30 text-white placeholder-gray-300 focus:border-yellow-400 focus:bg-white/25"
             />
             {formData.referralCode && (
-              <div className="text-green-300 text-xs mt-1">
+              <div className="text-green-300 text-sm font-medium mt-2">
                 ✓ Great! You'll get ₹150 total (₹100 + ₹50 Friend Gift)
               </div>
             )}
@@ -168,17 +177,17 @@ const SignUp = ({ onSignUp, onSwitchToLogin, onBack }) => {
 
           <Button 
             type="submit" 
-            className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold hover:from-yellow-500 hover:to-orange-600"
+            className="w-full bg-gradient-to-r from-yellow-400 to-orange-500 text-black font-semibold hover:from-yellow-500 hover:to-orange-600 py-3"
           >
             Create Account
           </Button>
         </form>
 
         <div className="text-center mt-6">
-          <span className="text-gray-300">Already have an account? </span>
+          <span className="text-gray-200">Already have an account? </span>
           <button 
             onClick={onSwitchToLogin}
-            className="text-yellow-400 hover:underline"
+            className="text-yellow-400 hover:underline font-medium"
           >
             Login here
           </button>

@@ -45,7 +45,7 @@ const LandingPage = ({ onLogin, onSignUp, onNavigate }) => {
           </Button>
           <Button 
             variant="outline" 
-            className="border-white text-white hover:bg-white hover:text-black font-semibold"
+            className="border-white text-white bg-transparent hover:bg-white hover:text-black font-semibold"
             onClick={onLogin}
           >
             Login
