@@ -192,11 +192,11 @@ const InvestmentPlans = ({ user, onBack, onUpdateUser }) => {
                     </div>
                     <div className="flex justify-between text-sm">
                       <span>Expected Profit:</span>
-                      <span className="text-green-400">₹{calculateProfit(Number(investAmount || 0), plan.returns).toLocaleString()}</span>
+                      <span className="text-green-400">₹{Number(calculateProfit(Number(investAmount || 0), plan.returns)).toLocaleString()}</span>
                     </div>
                     <div className="flex justify-between text-sm font-bold">
                       <span>Total Return:</span>
-                      <span className="text-yellow-400">₹{(Number(investAmount || 0) + calculateProfit(Number(investAmount || 0), plan.returns)).toLocaleString()}</span>
+                      <span className="text-yellow-400">₹{Number(Number(investAmount || 0) + Number(calculateProfit(Number(investAmount || 0), plan.returns))).toLocaleString()}</span>
                     </div>
                   </div>
                 )}
